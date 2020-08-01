@@ -158,6 +158,7 @@ function drawSideBars(){
 				text(rodTypeOptions[i],W/2+(i-1)*W/8,H/3+2);
 			}
 			textSize(15);
+			stroke(100,100,100,100);
 			text('Choose the ROD TYPE above, then hover over the START sidebar on the left hand side of the screen. Click and drag the mouse until reaching the END sidebar on the right hand side of the screen. As you drag to the other side, move the cursor up and down as this defines the heat map of the rod. The higher the cursor goes, the warmer that portion of the rod. The lower the cursor goes, the cooler that portion of the rod. Once you have reached the END sidebar, press the SPACE key to play the animation, and SPACE again if you wish to pause the animation.',W/4,7*H/10,W/2);
 		}
 	}
