@@ -128,16 +128,43 @@ function drawSideBars(){
 		}
 		
 		noStroke();
-		textSize(30);
+		textSize(75);
+		fill(50,110,65,50);
+		push();
+		translate(rodEx[0]/2,H/2);
+		rotate(-90);
+		text('S T    R T',0,0);
+		pop();
 		fill(50,110,65,200);
+		textSize(35);
 		text('START',rodEx[0]/2,H/2);
+		fill(100,50,50,50);
+		textSize(75);
+		push();
+		translate((W+rodEx[1])/2,H/2);
+		rotate(-90);
+		text(' E    D',0,0);
+		pop();
+		textSize(35);
 		fill(100,50,50,200);
 		text('END',(W+rodEx[1])/2,H/2);
 		
 		if (!rod.length){
+			noStroke();
+			fill(255);
+			rect(rodEx[0],0,rodEx[1]-rodEx[0],3*H/10);
+			fill(50,50,50);
+			textSize(35);
+			text('~ HEAT ROD ~',W/2,1*H/10);
+			textSize(20);
+			text('Define the heat map of a rod and watch it reach temperature equilibrium.',W/4,2*H/10,W/2);
+			stroke(50,50,50,200);
+			line(rodEx[0],3*H/10,rodEx[1],3*H/10);
+			noStroke();
+			textSize(25);
 			fill(50,50,50,200);
-			text('ROD TYPE:',W/2,H/5);
-			text('INSTRUCTIONS:',W/2,3*H/5);
+			text('ROD TYPE',W/2,3.8*H/10);
+			text('INSTRUCTIONS',W/2,6.5*H/10);
 			fill(255);
 			rectMode(CENTER);
 			for (var i=0; i<rodTypeOptions.length; i+=1){
@@ -146,8 +173,8 @@ function drawSideBars(){
 				} else {
 					stroke(200);
 				}
-				rect(W/2+(i-1)*W/8,H/3,70,70);
-				if (mouseX>W/2+(i-1)*W/8-35 && mouseX<W/2+(i-1)*W/8+35 && mouseY>H/3-35 && mouseY<H/3+35){
+				rect(W/2+(i-1)*W/8,5.1*H/10,70,70);
+				if (mouseX>W/2+(i-1)*W/8-35 && mouseX<W/2+(i-1)*W/8+35 && mouseY>5.1*H/10-35 && mouseY<5.1*H/10+35){
 					cursor('pointer');
 				}
 			}
@@ -156,10 +183,10 @@ function drawSideBars(){
 			stroke(100,100,100,100);
 			fill(0);
 			for (var i=0; i<rodTypeOptions.length; i+=1){
-				text(rodTypeOptions[i],W/2+(i-1)*W/8,H/3+2);
+				text(rodTypeOptions[i],W/2+(i-1)*W/8,5.1*H/10+2);
 			}
-			textSize(15);
-			text('Choose the ROD TYPE above, then hover over the START sidebar on the left hand side of the screen. Click and drag the mouse until reaching the END sidebar on the right hand side of the screen. As you drag to the other side, move the cursor up and down as this defines the heat map of the rod. The higher the cursor goes, the warmer that portion of the rod. The lower the cursor goes, the cooler that portion of the rod. Once you have reached the END sidebar, press the SPACE key to play the animation, and SPACE again if you wish to pause the animation.',W/4,7*H/10,W/2);
+			textSize(12);
+			text('•  Choose the ROD TYPE above, then hover over the START sidebar on the left hand side of the screen.\n\n•  Click and drag the mouse until reaching the END sidebar on the right hand side of the screen. As you drag to the other side, move the cursor up and down as this defines the heat map of the rod. The higher the cursor goes, the warmer that portion of the rod. The lower the cursor goes, the cooler that portion of the rod.\n\n•  Once you have reached the END sidebar, press the SPACE key to play the animation, and SPACE again if you wish to pause the animation.',W/4,7.2*H/10,W/2);
 		}
 	}
 }
@@ -225,7 +252,7 @@ function heatTransfer(){
 }
 
 function draw(){
-	background(255);
+	background(250);
 	drawSideBars();
 	rodFunctions();
 }
@@ -239,7 +266,7 @@ window.onresize = function() {
 function mouseClicked(){
 	if (!rod.length){
 		for (var i=0; i<rodTypeOptions.length; i+=1){
-			if (mouseX>W/2+(i-1)*W/8-35 && mouseX<W/2+(i-1)*W/8+35 && mouseY>H/3-35 && mouseY<H/3+35){
+			if (mouseX>W/2+(i-1)*W/8-35 && mouseX<W/2+(i-1)*W/8+35 && mouseY>5.1*H/10-35 && mouseY<5.1*H/10+35){
 				rodType = rodTypeOptions[i];
 			}
 		}
